@@ -6,6 +6,13 @@ const getAll = async (_req: Request, res: Response) => {
   return res.status(200).json(allTeams);
 };
 
+const getTeam = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const team = await teamsService.getTeam(Number(id));
+  return res.status(200).json(team);
+};
+
 export default {
   getAll,
+  getTeam,
 };
