@@ -1,6 +1,6 @@
 import Teams from "../../database/models/teamModel"
 
-const allTeams = [
+export const allTeams = [
     {
       "id": 1,
       "teamName": "Avaí/Kindermann"
@@ -67,9 +67,12 @@ const allTeams = [
     }
   ] as Teams[]
 
-// const team = {
-//     "id": 1,
-//     "teamName": "Avaí/Kindermann"
-//   } as Teams
+export const team = {
+    "id": 1,
+    "teamName": "Avaí/Kindermann"
+  } as Teams
 
-export default allTeams;
+export default {
+    allTeams,
+    team,
+};
