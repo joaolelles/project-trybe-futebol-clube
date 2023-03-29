@@ -11,7 +11,6 @@ module.exports = {
       },
       username: {
         allowNull: false,
-        unique: true,
         type: Sequelize.STRING,
       },
       role: {
@@ -20,7 +19,6 @@ module.exports = {
       },
       email: {
         allowNull: false,
-        unique: true,
         type: Sequelize.STRING,
       },
       password: {
