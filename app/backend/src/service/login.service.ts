@@ -1,28 +1,32 @@
 import bcrypt = require('bcryptjs');
+import { ModelStatic } from 'sequelize';
 import Users from '../database/models/userModel';
 
-const login = async (email: string, password: string) => {
-  const user = await Users.findOne({ where: { email } });
-  if (!user) {
-    return null;
-  }
-  const userPassword = bcrypt.compareSync(password, user.dataValues.password);
-  if (userPassword) {
-    const { password: _, ...userWithoutPassword } = user.dataValues;
-    return userWithoutPassword;
-  }
-};
+export default class LoginService {
+  _model: ModelStatic<Users>;
 
-const getRole = async (email: string) => {
-  const user = await Users.findOne({ where: { email } });
-  if (!user) {
-    return null;
+  constructor(model: ModelStatic<Users>) {
+    this._model = model;
   }
-  const { role } = user.dataValues;
-  return role;
-};
 
-export default {
-  login,
-  getRole,
-};
+  login = async (email: string, password: string) => {
+    const user = await this._model.findOne({ where: { email } });
+    if (!user) {
+      return null;
+    }
+    const userPassword = bcrypt.compareSync(password, user.dataValues.password);
+    if (userPassword) {
+      const { password: _, ...userWithoutPassword } = user.dataValues;
+      return userWithoutPassword;
+    }
+  };
+
+  getRole = async (email: string) => {
+    const user = await this._model.findOne({ where: { email } });
+    if (!user) {
+      return null;
+    }
+    const { role } = user.dataValues;
+    return role;
+  };
+}
