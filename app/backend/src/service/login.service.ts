@@ -1,8 +1,8 @@
 import bcrypt = require('bcryptjs');
 import Users from '../database/models/userModel';
 
-const login = async (emailw: string, password: string) => {
-  const user = await Users.findOne({ where: { email: emailw } });
+const login = async (email: string, password: string) => {
+  const user = await Users.findOne({ where: { email } });
   if (!user) {
     return null;
   }

@@ -5,6 +5,13 @@ const validateFieldsLogin = (req: Request, res: Response, next: NextFunction) =>
   if (!email || !password) {
     return res.status(400).json({ message: 'All fields must be filled' });
   }
+  const regex = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/;
+  if (!regex.test(email)) {
+    return res.status(401).json({ message: 'Invalid email or password' });
+  }
+  if (password.length < 6) {
+    return res.status(401).json({ message: 'Invalid email or password' });
+  }
   next();
 };
 
