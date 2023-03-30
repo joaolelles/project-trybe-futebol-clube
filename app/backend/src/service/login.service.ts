@@ -13,6 +13,16 @@ const login = async (email: string, password: string) => {
   }
 };
 
+const getRole = async (email: string) => {
+  const user = await Users.findOne({ where: { email } });
+  if (!user) {
+    return null;
+  }
+  const { role } = user.dataValues;
+  return role;
+};
+
 export default {
   login,
+  getRole,
 };

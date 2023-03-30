@@ -14,6 +14,14 @@ const login = async (req: Request, res: Response) => {
   }
 };
 
+const getRole = async (req: Request, res: Response) => {
+  const { payload } = req.body.user;
+  const { email } = payload;
+  const role = await loginService.getRole(email);
+  return res.status(200).json({ role });
+};
+
 export default {
   login,
+  getRole,
 };
