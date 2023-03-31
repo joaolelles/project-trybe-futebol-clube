@@ -9,9 +9,9 @@ export default class LoginController {
     this._service = service;
   }
 
-  login = async (req: Request, res: Response) => {
+  postLogin = async (req: Request, res: Response) => {
     const { email, password } = req.body;
-    const user = await this._service.login(email, password);
+    const user = await this._service.postLogin(email, password);
     if (!user) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }

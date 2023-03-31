@@ -10,7 +10,7 @@ import { allTeams, team } from './mocks/teamsMocks';
 import Teams from '../database/models/teamModel';
 chai.use(chaiHttp);
 
-describe('Testando a resposta da requisição', () => {        
+describe('Testando a resposta da requisição a /teams', () => {        
     it('Testando a getAll', async () => {
         Sinon.stub(Teams, "findAll").resolves(allTeams as Teams[]);
         let chaiHttpResponse: Response;

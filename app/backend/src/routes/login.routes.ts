@@ -10,7 +10,7 @@ const loginController = new LoginController(loginService);
 
 const router = express.Router();
 
-router.post('/', validateFieldsLogin, loginController.login);
+router.post('/', validateFieldsLogin, loginController.postLogin);
 router.get('/role', authToken, loginController.getRole);
 
 export default router;

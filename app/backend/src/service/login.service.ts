@@ -9,7 +9,7 @@ export default class LoginService {
     this._model = model;
   }
 
-  login = async (email: string, password: string) => {
+  postLogin = async (email: string, password: string) => {
     const user = await this._model.findOne({ where: { email } });
     if (!user) {
       return null;
@@ -17,6 +17,7 @@ export default class LoginService {
     const userPassword = bcrypt.compareSync(password, user.dataValues.password);
     if (userPassword) {
       const { password: _, ...userWithoutPassword } = user.dataValues;
+
       return userWithoutPassword;
     }
   };
