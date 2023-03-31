@@ -3,7 +3,7 @@ import Users from "../../database/models/userModel";
 export const login = {
     email: "admin@admin.com",
     password: "12345678"
-  }
+}
 
 export const user = {
     "id": 1,
