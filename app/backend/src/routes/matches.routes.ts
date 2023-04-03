@@ -13,5 +13,6 @@ const router = express.Router();
 router.patch('/:id/finish', authToken, matchesController.endMatch);
 router.patch('/:id', authToken, matchesController.upMatchResult);
 router.get('/', matchesController.getAll);
+router.post('/', authToken, matchesController.postNewMatch);
 
 export default router;
