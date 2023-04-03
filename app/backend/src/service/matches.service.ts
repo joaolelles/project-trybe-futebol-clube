@@ -14,8 +14,8 @@ export default class MatchesService {
     this.teamModel = teamModel;
   }
 
-  getAll = async (): Promise<Matches[]> => {
-    const result = await this.matchesModel.findAll({
+  getAll = async (inProgress: string | undefined): Promise<Matches[]> => {
+    const matches = await this.matchesModel.findAll({
       include: [
         {
           model: this.teamModel,
@@ -28,6 +28,9 @@ export default class MatchesService {
           attributes: { exclude: ['id'] },
         }],
     });
-    return result;
+    if (inProgress) {
+      return matches.filter((matche) => matche.inProgress === JSON.parse(inProgress.toLowerCase()));
+    }
+    return matches;
   };
 }
