@@ -29,7 +29,7 @@ export default class MatchesService {
         }],
     });
     if (inProgress) {
-      return matches.filter((matche) => matche.inProgress === JSON.parse(inProgress.toLowerCase()));
+      return matches.filter((match) => match.inProgress === JSON.parse(inProgress.toLowerCase()));
     }
     return matches;
   };
