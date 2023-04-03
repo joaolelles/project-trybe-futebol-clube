@@ -38,4 +38,12 @@ export default class MatchesService {
     await this.matchesModel
       .update({ inProgress: false }, { where: { id } });
   };
+
+  upMatchResult = async (scoreHome: number, scoreAway: number, id: number) => {
+    // const match = await this.matchesModel.findByPk(id);
+    // match?.update({ homeTeamGoals: scoreHome, awayTeamGoals: scoreAway });
+    const match = await this.matchesModel.findByPk(id);
+    match?.update({ homeTeamGoals: scoreHome, awayTeamGoals: scoreAway });
+    return match;
+  };
 }
