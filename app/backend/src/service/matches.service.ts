@@ -33,4 +33,9 @@ export default class MatchesService {
     }
     return matches;
   };
+
+  endMatch = async (id: number) => {
+    await this.matchesModel
+      .update({ inProgress: false }, { where: { id } });
+  };
 }
