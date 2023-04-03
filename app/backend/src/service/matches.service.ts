@@ -20,12 +20,12 @@ export default class MatchesService {
       include: [
         {
           model: this.teamModel,
-          as: 'awayTeam',
+          as: 'awayMatch',
           attributes: { exclude: ['id'] },
         },
         {
           model: this.teamModel,
-          as: 'homeTeam',
+          as: 'homeMatch',
           attributes: { exclude: ['id'] },
         }],
     });
