@@ -43,6 +43,22 @@ export default class LeaderBoardService {
     const teams = await Teams.findAll();
     const matches = await Matches.findAll();
     const leaderboard = new AwayLeaderboard(teams, matches);
-    return leaderboard.createLeaderboard();
+    const newLeaderboard = leaderboard.createLeaderboard();
+    const classification = newLeaderboard.sort((a, b) => {
+      if (a.totalPoints < b.totalPoints) return 1;
+      if (a.totalPoints > b.totalPoints) return -1;
+
+      if (a.totalVictories < b.totalVictories) return 1;
+      if (a.totalVictories > b.totalVictories) return -1;
+
+      if (a.goalsBalance < b.goalsBalance) return 1;
+      if (a.goalsBalance > b.goalsBalance) return -1;
+
+      if (a.goalsFavor < b.goalsFavor) return 1;
+      if (a.goalsFavor > b.goalsFavor) return -1;
+
+      return 0;
+    });
+    return classification;
   };
 }
