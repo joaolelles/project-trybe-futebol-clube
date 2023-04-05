@@ -13,6 +13,8 @@ export default class HomeStats implements ILeaderboard {
   totalLosses: number;
   goalsFavor: number;
   goalsOwn: number;
+  goalsBalance: number;
+  efficiency: string;
 
   constructor(team: Teams, matches: Matches[]) {
     this.team = team;
@@ -25,6 +27,8 @@ export default class HomeStats implements ILeaderboard {
     this.totalLosses = this.getTotalLosses();
     this.goalsFavor = this.getGoalsFavor();
     this.goalsOwn = this.getGoalsOwn();
+    this.goalsBalance = this.goalsFavor - this.goalsOwn;
+    this.efficiency = this.getEffinciency();
   }
 
   getTotalGames() {
@@ -98,5 +102,17 @@ export default class HomeStats implements ILeaderboard {
       }
     });
     return goalsOwn;
+  }
+
+  getEffinciency() {
+    let effinciency = 0;
+    this.matches.forEach((match) => {
+      if (this.team.id === match.homeTeamId
+        && match.inProgress === false
+      ) {
+        effinciency = (this.totalPoints / (this.totalGames * 3)) * 100;
+      }
+    });
+    return effinciency.toFixed(2);
   }
 }
