@@ -8,12 +8,17 @@ export default class LeaderBoardController {
     this._service = service;
   }
 
-  homeDreateLeaderboard = async (req: Request, res: Response) => {
+  geralCreateLeaderboard = async (_req: Request, res: Response) => {
+    const result = await this._service.geralCreateLeaderboard();
+    return res.status(200).json(result);
+  };
+
+  homeCreateLeaderboard = async (_req: Request, res: Response) => {
     const result = await this._service.homeDreateLeaderboard();
     return res.status(200).json(result);
   };
 
-  awayCreateLeaderboard = async (req: Request, res: Response) => {
+  awayCreateLeaderboard = async (_req: Request, res: Response) => {
     const result = await this._service.awayCreateLeaderboard();
     return res.status(200).json(result);
   };
