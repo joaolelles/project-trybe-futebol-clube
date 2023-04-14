@@ -53,15 +53,15 @@ describe('Testando a resposta da requisição a /login', () => {
             expect(chaiHttpResponse.body).to.be.deep.equal({ message: 'Token must be a valid token' })
         })
     });
-    // it('Testando a getRole caso tenha sucesso', async () => {
-    //     Sinon.stub(Users, "findOne").resolves(role as Users);
-    //     Sinon.stub(bcrypt, 'compareSync').returns(true)
-    //     Sinon.mock(jwt).expects('sign').returns(token)
-    //     chai.request(app).get('/login/role').send(role).then((chaiHttpResponse) => {
-    //         expect(chaiHttpResponse.status).to.be.equal(200);
-    //         expect(chaiHttpResponse.body).to.be.deep.equal(role)
-    //     })
-    // });
+    it('Testando a getRole caso tenha sucesso', async () => {
+        Sinon.stub(Users, "findOne").resolves(role as Users);
+        Sinon.stub(bcrypt, 'compareSync').returns(true)
+        Sinon.mock(jwt).expects('sign').returns(token)
+        chai.request(app).get('/login/role').send(role).then((chaiHttpResponse) => {
+            expect(chaiHttpResponse.status).to.be.equal(200);
+            expect(chaiHttpResponse.body).to.be.deep.equal(role)
+        })
+    });
     it('Testando a getRole caso tenha "Token not found"', async () => {
         Sinon.stub(Users, "findOne").resolves(role as Users);
         Sinon.stub(bcrypt, 'compareSync').returns(true)
@@ -70,14 +70,5 @@ describe('Testando a resposta da requisição a /login', () => {
             expect(chaiHttpResponse.status).to.be.equal(401);
             expect(chaiHttpResponse.body).to.be.deep.equal({ message: 'Token not found' })
         })
-    });
-    // it('Testando a getRole caso tenha "Token must be a valid token"', async () => {
-    //     Sinon.stub(Users, "findOne").resolves(role as Users);
-    //     Sinon.stub(bcrypt, 'compareSync').returns(true)
-    //     Sinon.mock(jwt).expects('verify').withArgs('token').returns(invalidToken)
-    //     chai.request(app).get('/login/role').send(role).then((chaiHttpResponse) => {
-    //         expect(chaiHttpResponse.status).to.be.equal(401);
-    //         expect(chaiHttpResponse.body).to.be.deep.equal({ message: 'Token must be a valid token' })
-    //     })
-    // });
+    }); 
 });
