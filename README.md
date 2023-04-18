@@ -417,7 +417,7 @@ Com os containers do _Banco de dados_, _Back-end_ e _Front-end_ rodando e saudá
   `npm test`
 
 - Para executar apenas um arquivo específico de testes, e seus respectivos requisitos, basta colocar no final do comando anterior o nome do arquivo de teste. Os arquivos de teste podem ser localizados no diretório `./__tests__/E2E/`. Execute na raiz do seu projeto, por exemplo:
-`npm test 01_database.test.js`
+  `npm test 01_database.test.js`
 
  <br />
 
@@ -1083,7 +1083,6 @@ Exemplo de retorno da requisição:
 
 - Partidas que estiverem em andamento (não foram finalizadas) não devem ser consideradas.
 
-   <details>
 <summary><strong> Exemplo de retorno: </strong></summary> <br/>
 
 ```json
@@ -1121,8 +1120,6 @@ Exemplo de retorno da requisição:
   ...
 ]
 ```
-
-</details>
 
 ### 24 - Desenvolva o endpoint `/leaderboard/home` de forma que seja possível filtrar as classificações dos times da casa na tela de classificação do front-end com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
@@ -2433,4 +2430,5 @@ Exemplo de retorno da requisição:
 ]
 ```
 
+</details>
 </details>
