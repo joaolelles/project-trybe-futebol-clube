@@ -1592,7 +1592,7 @@ Exemplo de retorno da requisição:
 ]
 ```
 
-</details>
+    </details>
 
 ### 27 - Desenvolva o endpoint `/leaderboard/away`, de forma que seja possível filtrar as classificações dos times quando visitantes na tela de classificação do front-end, com os dados iniciais do banco de dados, incluindo as propriedades `goalsBalance` e `efficiency`, além das propriedades do requisito anterior
 
